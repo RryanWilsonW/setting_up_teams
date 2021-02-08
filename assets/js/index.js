@@ -1,30 +1,30 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./generateMarkdown');
-let internResponse;
-let engineerResponse;
-let managerResponse;
+let internResponse = [];
+let engineerResponse = [];
+let managerResponse
 function init() {
     const questions = [
         {
             type: 'input',
             message: 'What is the name of your teams manager',
-            name: 'managerName'
+            name: 'name'
         },
         {
             type: 'input',
             message: 'What is your team managers email?',
-            name: 'managerEmail'
+            name: 'email'
         },
         {
             type: 'input',
             message: 'What is your team managers employee ID?',
-            name: 'managerID'
+            name: 'id'
         },
         {
             type: 'input',
             message: 'What is your team managers office number?',
-            name: 'managerName'
+            name: 'officeNumber'
         },
     ];
     
@@ -51,7 +51,10 @@ function menuQuestion() {
         } else if(response.addTeamMember === 'Intern') {
             internQuestions();
         } else {
-            generateMarkdown();
+            console.log(managerResponse);
+            console.log(engineerResponse);
+            console.log(internResponse);
+            generateMarkdown(managerResponse, engineerResponse, internResponse);
         }
     })
     .catch(err => {err ? console.log(err) : console.log('HTML Generated!!')});
@@ -62,27 +65,27 @@ function engineerQuestions() {
         {
             type: 'input',
             message: 'What is the name of your engineer?',
-            name: 'engineerName',
+            name: 'name',
         },
         {
             type: 'input',
             message: 'What is your engineers ID number?',
-            name: 'engineerID',          
+            name: 'id',          
         },
         {
             type: 'input',
             message: 'What is your engineers email?',
-            name: 'engineerEmail',           
+            name: 'email',           
         },
         {
             type: 'input',
             message: 'What is your engieers GitHub user name?',
-            name: 'engineerGitUser',            
+            name: 'gitHubUser',            
         }
     ]
     inquirer.prompt(questions)
     .then(response => {
-        engineerResponse = response;
+        engineerResponse.push(response);
         menuQuestion();
     })
     .catch(err => {err ? console.log(err) : console.log('HTML Generated!!')});
@@ -93,27 +96,27 @@ function internQuestions() {
         {
             type: 'input',
             message: 'What is the name of your intern?',
-            name: 'internName',            
+            name: 'name',            
         },
         {
             type: 'input',
             message: 'What is your interns ID number?',
-            name: 'internID',          
+            name: 'id',          
         },
         {
             type: 'input',
             message: 'What is your interns email?',
-            name: 'internEmail',          
+            name: 'email',          
         },
         {
             type: 'input',
             message: 'What school does your intern attend?',
-            name: 'internSchool',        
+            name: 'school',        
         }
     ]
     inquirer.prompt(questions)
     .then(response => {
-        internResponse = response;
+        internResponse.push(response);
         menuQuestion();
     })
     .catch(err => {err ? console.log(err) : console.log('HTML Generated!!')});
