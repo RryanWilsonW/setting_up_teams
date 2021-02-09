@@ -1,0 +1,83 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+
+}
+
+html {
+    background-image:url(../img/background.jpg);
+    background-size: cover;
+}
+
+h1 {  
+    background-color: rgb(194, 231, 243);
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    padding: 50px;
+    color: #091226;
+}
+
+h2 {
+    color: #091226;
+}
+
+li {
+    float: left;
+    width: 33%;
+    list-style: none; 
+    padding: 10px;   
+    filter: drop-shadow(0px 20px 20px 0px);
+}
+
+p {
+    font-size: 16px;
+    border:  solid 2px;
+    line-height: 22px;
+    padding: 10px;
+    height: 15%;
+    float: left;
+    width: 80%;
+    margin: 0px 10% 0px 10%;
+    color: #091226;
+    
+}
+
+.allCards {
+    margin: 0px;
+    margin-top: 60px;
+    height: 100%;
+}
+
+.employeeCard{
+    filter: drop-shadow(20px 20px 10px #091226);
+    border-radius: 15px;
+    text-align: center;
+    padding: 0px;
+    margin: 3%;
+    height: 300px;
+    background-color: #F9FEFF;
+}
+
+.cardHead {
+    background-color: rgb(194, 231, 243);
+    float: left;
+    width: 100%;
+    color: #E67106;
+    padding-bottom: 10px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+@media(max-width: 1000px) {
+    li {
+        width: 50%;
+    }
+}
+
+@media(max-width: 600px) {
+    li {
+        width: 100%
+    }
+}

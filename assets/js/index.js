@@ -18,7 +18,7 @@ function init() {
         },
         {
             type: 'input',
-            message: 'What is your team managers employee ID?',
+            message: 'What is your team managers employee ID number?',
             name: 'id'
         },
         {
@@ -81,6 +81,11 @@ function engineerQuestions() {
             type: 'input',
             message: 'What is your engieers GitHub user name?',
             name: 'gitHubUser',            
+        },
+        {
+            type: 'input',
+            message: 'What is the link to your GitHub profile',
+            name: 'gitHubLink'
         }
     ]
     inquirer.prompt(questions)

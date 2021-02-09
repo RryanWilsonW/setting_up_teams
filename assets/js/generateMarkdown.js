@@ -16,15 +16,18 @@ function generateMarkdown(managerData, engineerData, internData) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Team</title>
-        <link rel="stylesheet" href='../style/style.css'>
+        <link rel="stylesheet" href='./assets/style/style.css'>
+        <link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
     </head>
     <body>
-        <h1>My Team</h1>
-        <ul> 
-        ${managerCard}
-        ${engineerCards}
-        ${internCards}
-        </ul> 
+        <h1>My Team!</h1>
+            <div class="allCards">
+                <ul> 
+                ${managerCard}
+                ${engineerCards}
+                ${internCards}
+                </ul>
+            </div>
     </body>
     </html>`
 
@@ -35,14 +38,16 @@ function generateMarkdown(managerData, engineerData, internData) {
 function getManagerCard(managerData) {
     let card =
     `    <li>
-                <div>
-                    <h1>${managerData.name}</h1>
-                    <h2>Manager</h2>
-                </div>
-                <div>
-                    <p>ID: ${managerData.id}</p>
-                    <p>Email: ${managerData.email}</p>
-                    <p>Office number: ${managerData.officeNumber}</p>
+                <div class="employeeCard">
+                    <div class="cardHead">
+                        <h2><strong>${managerData.name}</strong></h2>
+                        <h3>(Manager)</h3>
+                    </div>
+                    <div>
+                        <p>ID: #${managerData.id}</p>
+                        <p>Email:<a href="mailto:${managerData.email}">${managerData.email}</a></p>
+                        <p>Office: #${managerData.officeNumber}</p>
+                    </div>
                 </div>
             </li>`;
     return card;
@@ -54,16 +59,18 @@ function getEngineerCards(engineerData) {
     engineerData.forEach(engineer => {
         cards +=
         `    <li>
-                <div>
-                    <h1>${engineer.name}</h1>
-                    <h2>Engineer</h2>
-                </div>
-                <div>
-                    <p>ID: ${engineer.id}</p>
-                    <p>Email: ${engineer.email}</p>
-                    <p>GitHub: ${engineer.gitHubUser}</p>
-                </div>
-            </li>
+        <div class="employeeCard">
+            <div class="cardHead">
+                <h2><strong>${engineer.name}</strong></h2>
+                <h3>(Engineer)</h3>
+            </div>
+            <div>
+                <p>ID: #${engineer.id}</p>
+                <p>Email:<a href="mailto:${engineer.email}">${engineer.email}</a></p>
+                <p>GitHub: <a href=${engineer.gitHubLink} target="_blank">${engineer.gitHubUser}</a></p>
+            </div>
+        </div>
+    </li>
         `;
     });
 
@@ -75,14 +82,16 @@ function getInternCards(internData) {
     internData.forEach(intern => {
         cards +=
         `    <li>
-                <div>
-                    <h1>${intern.name}</h1>
-                    <h2>Intern</h2>
-                </div>
-                <div>
-                    <p>ID: ${intern.id}</p>
-                    <p>Email: ${intern.email}</p>
-                    <p>GitHub: ${intern.school}</p>
+                <div class="employeeCard">
+                    <div class="cardHead">
+                        <h2><strong>${intern.name}</strong></h2>
+                        <h3>(Intern)</h3>
+                    </div>
+                    <div>
+                        <p>ID: #${intern.id}</p>
+                        <p>Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
+                        <p>School: ${intern.school}</p>
+                    </div>
                 </div>
             </li>
         `;
